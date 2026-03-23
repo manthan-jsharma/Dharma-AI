@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+// IMPORTING THE CLIENT COMPONENT
 import IndustryCard, { Industry } from "@/components/IndustryCard";
 
 export const metadata: Metadata = {
@@ -245,7 +246,6 @@ const SMES: Industry[] = [
 export default function IndustriesPage() {
   return (
     <>
-      {/* Hero */}
       <section
         className="pt-[130px] pb-20 px-6 relative overflow-hidden"
         style={{ background: "#090C10" }}
@@ -293,7 +293,6 @@ export default function IndustriesPage() {
             you see results in weeks, not months.
           </p>
 
-          {/* Stats row */}
           <div className="flex justify-center gap-10 mt-12 flex-wrap">
             {[
               { val: "50+", label: "Businesses Served" },
@@ -328,7 +327,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Professionals */}
       <section className="py-20 px-6" style={{ background: "#0D1117" }}>
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -373,7 +371,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* SMEs */}
       <section className="py-20 px-6" style={{ background: "#090C10" }}>
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -418,7 +415,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <section
         className="py-24 px-6 text-center relative overflow-hidden"
         style={{ background: "#0D1117" }}

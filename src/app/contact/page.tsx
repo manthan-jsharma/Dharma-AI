@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import ContactCard from "@/components/ContactCard";
 
 export const metadata: Metadata = {
   title: "Contact Us — Artha AI",
@@ -159,57 +160,7 @@ export default function ContactPage() {
               {/* Contact cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                 {CONTACT_DETAILS.map((c) => (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 rounded-[14px] p-4 transition-all duration-200 group"
-                    style={{
-                      background: "#0F1419",
-                      border: "1px solid rgba(255,255,255,0.07)",
-                      textDecoration: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      (
-                        e.currentTarget as HTMLAnchorElement
-                      ).style.borderColor = `${c.color}40`;
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                        "rgba(255,255,255,0.07)";
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl flex-shrink-0"
-                      style={{ background: `${c.color}15` }}
-                    >
-                      {c.icon}
-                    </div>
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "10.5px",
-                          color: "rgba(255,255,255,0.3)",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.08em",
-                          fontFamily: "monospace",
-                          marginBottom: "3px",
-                        }}
-                      >
-                        {c.label}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "13.5px",
-                          color: "white",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {c.value}
-                      </p>
-                    </div>
-                  </a>
+                  <ContactCard key={c.label} detail={c} />
                 ))}
               </div>
 

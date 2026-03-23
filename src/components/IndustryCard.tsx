@@ -36,7 +36,6 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
         (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
       }}
     >
-      {/* Header */}
       <div className="flex items-start justify-between mb-5">
         <div className="flex items-center gap-3">
           <div
@@ -63,7 +62,6 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
             </p>
           </div>
         </div>
-        {/* Stat */}
         <div className="text-right flex-shrink-0 ml-3">
           <div
             className="font-head text-xl leading-none"
@@ -86,7 +84,6 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
         </div>
       </div>
 
-      {/* Challenges + Solutions */}
       <div className="grid grid-cols-2 gap-3 mb-5">
         <div>
           <p
@@ -156,7 +153,6 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
         </div>
       </div>
 
-      {/* CTA */}
       <Link
         href="/diagnostic"
         className="inline-flex items-center gap-1.5 transition-all duration-200"
