@@ -43,9 +43,9 @@ interface ProgBarProps {
 
 function ProgBar({ progress, step, currentQ, total }: ProgBarProps) {
   function label() {
-    if (step === "intro")     return "Ready to start";
+    if (step === "intro") return "Ready to start";
     if (step === "questions") return `Question ${currentQ + 1} of ${total}`;
-    if (step === "lead")      return "Final step";
+    if (step === "lead") return "Final step";
     return "Complete";
   }
 
@@ -89,19 +89,26 @@ function ProgBar({ progress, step, currentQ, total }: ProgBarProps) {
 // ── Main component ──
 
 export function DiagnosticForm() {
-  const [step, setStep]         = useState<Step>("intro");
+  const [step, setStep] = useState<Step>("intro");
   const [currentQ, setCurrentQ] = useState(0);
-  const [answers, setAnswers]   = useState<number[]>([]);
+  const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
-  const [lead, setLead]         = useState<LeadData>({ name: "", email: "", phone: "" });
-  const [errors, setErrors]     = useState<Partial<LeadData>>({});
+  const [lead, setLead] = useState<LeadData>({
+    name: "",
+    email: "",
+    phone: "",
+  });
+  const [errors, setErrors] = useState<Partial<LeadData>>({});
 
-  const total    = DIAGNOSTIC_QUESTIONS.length;
+  const total = DIAGNOSTIC_QUESTIONS.length;
   const progress =
-    step === "result" ? 100
-    : step === "lead"  ? 95
-    : step === "intro" ? 0
-    : Math.round((currentQ / total) * 100);
+    step === "result"
+      ? 100
+      : step === "lead"
+      ? 95
+      : step === "intro"
+      ? 0
+      : Math.round((currentQ / total) * 100);
 
   function startTest() {
     setStep("questions");
@@ -211,15 +218,25 @@ export function DiagnosticForm() {
         >
           How AI-Ready Is Your Business?
         </h1>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
+        <p
+          style={{
+            fontSize: "14px",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.7,
+          }}
+        >
           20 questions · 4 minutes · Personalised PDF report sent to your inbox
         </p>
       </div>
 
-      <ProgBar progress={progress} step={step} currentQ={currentQ} total={total} />
+      <ProgBar
+        progress={progress}
+        step={step}
+        currentQ={currentQ}
+        total={total}
+      />
 
       <AnimatePresence mode="wait">
-
         {/* ── INTRO ── */}
         {step === "intro" && (
           <motion.div
@@ -250,8 +267,9 @@ export function DiagnosticForm() {
                   }}
                 >
                   Answer 20 quick questions across 7 key areas of your business.
-                  You&apos;ll receive a personalised AI Maturity Score and a detailed
-                  PDF report with specific recommendations for your profession.
+                  You&apos;ll receive a personalised AI Maturity Score and a
+                  detailed PDF report with specific recommendations for your
+                  profession.
                 </p>
               </div>
 
@@ -283,7 +301,14 @@ export function DiagnosticForm() {
               </div>
 
               {/* What you get */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                  marginBottom: "28px",
+                }}
+              >
                 {[
                   "AI Maturity Score (Low / Medium / High)",
                   "Category-wise breakdown across 7 areas",
@@ -301,8 +326,16 @@ export function DiagnosticForm() {
                       padding: "10px 14px",
                     }}
                   >
-                    <CheckCircle2 size={15} style={{ color: "#10B981", flexShrink: 0 }} />
-                    <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)" }}>
+                    <CheckCircle2
+                      size={15}
+                      style={{ color: "#10B981", flexShrink: 0 }}
+                    />
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(255,255,255,0.65)",
+                      }}
+                    >
                       {item}
                     </span>
                   </div>
@@ -385,7 +418,14 @@ export function DiagnosticForm() {
                 {DIAGNOSTIC_QUESTIONS[currentQ].question}
               </h2>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                  marginBottom: "28px",
+                }}
+              >
                 {DIAGNOSTIC_QUESTIONS[currentQ].options.map((opt, i) => (
                   <button
                     key={i}
@@ -394,8 +434,13 @@ export function DiagnosticForm() {
                       textAlign: "left",
                       padding: "14px 16px",
                       borderRadius: "12px",
-                      background: selected === i ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.03)",
-                      border: `1.5px solid ${selected === i ? "#3B82F6" : "rgba(255,255,255,0.08)"}`,
+                      background:
+                        selected === i
+                          ? "rgba(59,130,246,0.15)"
+                          : "rgba(255,255,255,0.03)",
+                      border: `1.5px solid ${
+                        selected === i ? "#3B82F6" : "rgba(255,255,255,0.08)"
+                      }`,
                       color: selected === i ? "white" : "rgba(255,255,255,0.6)",
                       fontSize: "13.5px",
                       cursor: "pointer",
@@ -406,14 +451,23 @@ export function DiagnosticForm() {
                     }}
                   >
                     {selected === i && (
-                      <CheckCircle2 size={15} style={{ color: "#60A5FA", flexShrink: 0 }} />
+                      <CheckCircle2
+                        size={15}
+                        style={{ color: "#60A5FA", flexShrink: 0 }}
+                      />
                     )}
                     {opt}
                   </button>
                 ))}
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", gap: "12px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: "12px",
+                }}
+              >
                 <button
                   onClick={handleBack}
                   style={{
@@ -440,10 +494,12 @@ export function DiagnosticForm() {
                     alignItems: "center",
                     gap: "6px",
                     padding: "12px 28px",
-                    background: selected !== null ? "#3B82F6" : "rgba(255,255,255,0.06)",
+                    background:
+                      selected !== null ? "#3B82F6" : "rgba(255,255,255,0.06)",
                     border: "none",
                     borderRadius: "10px",
-                    color: selected !== null ? "white" : "rgba(255,255,255,0.25)",
+                    color:
+                      selected !== null ? "white" : "rgba(255,255,255,0.25)",
                     fontSize: "13.5px",
                     fontWeight: 500,
                     cursor: selected !== null ? "pointer" : "not-allowed",
@@ -499,18 +555,41 @@ export function DiagnosticForm() {
                   marginBottom: "24px",
                 }}
               >
-                Your personalised PDF report will be emailed instantly.
-                Your data stays private — no spam, ever.
+                Your personalised PDF report will be emailed instantly. Your
+                data stays private — no spam, ever.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
-                {(
-                  [
-                    { id: "name",  label: "Full Name *",     type: "text",  field: "name"  as const, placeholder: "Eg: Rajiv Sharma"  },
-                    { id: "email", label: "Email Address *", type: "email", field: "email" as const, placeholder: "rajiv@example.com" },
-                    { id: "phone", label: "Mobile Number *", type: "tel",   field: "phone" as const, placeholder: "+91 98765 43210"   },
-                  ]
-                ).map(({ id, label, type, field, placeholder }) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                  marginBottom: "24px",
+                }}
+              >
+                {[
+                  {
+                    id: "name",
+                    label: "Full Name *",
+                    type: "text",
+                    field: "name" as const,
+                    placeholder: "Eg: Rajiv Sharma",
+                  },
+                  {
+                    id: "email",
+                    label: "Email Address *",
+                    type: "email",
+                    field: "email" as const,
+                    placeholder: "rajiv@example.com",
+                  },
+                  {
+                    id: "phone",
+                    label: "Mobile Number *",
+                    type: "tel",
+                    field: "phone" as const,
+                    placeholder: "+91 98765 43210",
+                  },
+                ].map(({ id, label, type, field, placeholder }) => (
                   <div key={id}>
                     <label
                       htmlFor={id}
@@ -528,11 +607,15 @@ export function DiagnosticForm() {
                       type={type}
                       placeholder={placeholder}
                       value={lead[field]}
-                      onChange={(e) => setLead({ ...lead, [field]: e.target.value })}
+                      onChange={(e) =>
+                        setLead({ ...lead, [field]: e.target.value })
+                      }
                       style={{
                         width: "100%",
                         background: "rgba(255,255,255,0.05)",
-                        border: `1.5px solid ${errors[field] ? "#EF4444" : "rgba(255,255,255,0.1)"}`,
+                        border: `1.5px solid ${
+                          errors[field] ? "#EF4444" : "rgba(255,255,255,0.1)"
+                        }`,
                         borderRadius: "10px",
                         padding: "12px 14px",
                         color: "white",
@@ -542,7 +625,13 @@ export function DiagnosticForm() {
                       }}
                     />
                     {errors[field] && (
-                      <p style={{ fontSize: "11.5px", color: "#EF4444", marginTop: "5px" }}>
+                      <p
+                        style={{
+                          fontSize: "11.5px",
+                          color: "#EF4444",
+                          marginTop: "5px",
+                        }}
+                      >
                         {errors[field]}
                       </p>
                     )}
@@ -550,7 +639,13 @@ export function DiagnosticForm() {
                 ))}
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", gap: "12px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: "12px",
+                }}
+              >
                 <button
                   onClick={handleBack}
                   style={{
@@ -628,21 +723,31 @@ export function DiagnosticForm() {
                 >
                   <svg
                     viewBox="0 0 130 130"
-                    style={{ width: "100%", height: "100%", transform: "rotate(-90deg)" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      transform: "rotate(-90deg)",
+                    }}
                   >
                     <circle
-                      cx="65" cy="65" r="55"
+                      cx="65"
+                      cy="65"
+                      r="55"
                       fill="none"
                       stroke="rgba(255,255,255,0.06)"
                       strokeWidth="11"
                     />
                     <circle
-                      cx="65" cy="65" r="55"
+                      cx="65"
+                      cy="65"
+                      r="55"
                       fill="none"
                       stroke={result.color}
                       strokeWidth="11"
                       strokeLinecap="round"
-                      strokeDasharray={`${2 * Math.PI * 55 * (result.percentage / 100)} ${2 * Math.PI * 55}`}
+                      strokeDasharray={`${
+                        2 * Math.PI * 55 * (result.percentage / 100)
+                      } ${2 * Math.PI * 55}`}
                     />
                   </svg>
                   <div
@@ -665,7 +770,13 @@ export function DiagnosticForm() {
                     >
                       {result.percentage}
                     </span>
-                    <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        color: "rgba(255,255,255,0.4)",
+                        marginTop: "2px",
+                      }}
+                    >
                       / 100
                     </span>
                   </div>
@@ -708,7 +819,13 @@ export function DiagnosticForm() {
                 >
                   Breakdown by Category
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                  }}
+                >
                   {result.categoryScores.map((cat) => {
                     const pct = Math.round((cat.score / cat.max) * 100);
                     return (
@@ -720,7 +837,12 @@ export function DiagnosticForm() {
                             marginBottom: "4px",
                           }}
                         >
-                          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              color: "rgba(255,255,255,0.55)",
+                            }}
+                          >
                             {cat.category}
                           </span>
                           <span
@@ -745,7 +867,12 @@ export function DiagnosticForm() {
                             style={{
                               width: `${pct}%`,
                               height: "100%",
-                              background: pct < 35 ? "#F59E0B" : pct < 65 ? "#3B82F6" : "#10B981",
+                              background:
+                                pct < 35
+                                  ? "#F59E0B"
+                                  : pct < 65
+                                  ? "#3B82F6"
+                                  : "#10B981",
                               borderRadius: "100px",
                             }}
                           />
@@ -770,7 +897,13 @@ export function DiagnosticForm() {
                 >
                   Your Top Recommendations
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                  }}
+                >
                   {result.recommendations.map((rec, i) => (
                     <div
                       key={i}
@@ -800,7 +933,12 @@ export function DiagnosticForm() {
                       >
                         {i + 1}
                       </span>
-                      <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          color: "rgba(255,255,255,0.6)",
+                        }}
+                      >
                         {rec}
                       </span>
                     </div>
@@ -822,15 +960,27 @@ export function DiagnosticForm() {
                 }}
               >
                 <span style={{ fontSize: "18px" }}>📧</span>
-                <span style={{ fontSize: "12.5px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+                <span
+                  style={{
+                    fontSize: "12.5px",
+                    color: "rgba(255,255,255,0.55)",
+                    lineHeight: 1.6,
+                  }}
+                >
                   Your detailed PDF report has been sent to{" "}
                   <strong style={{ color: "white" }}>{lead.email}</strong>
                 </span>
               </div>
 
               {/* CTAs */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+              >
+                <a
                   href="https://calendly.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -872,7 +1022,6 @@ export function DiagnosticForm() {
             </DiagCard>
           </motion.div>
         )}
-
       </AnimatePresence>
     </div>
   );

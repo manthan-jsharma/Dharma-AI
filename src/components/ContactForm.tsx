@@ -81,7 +81,10 @@ function SuccessState({ name, email }: SuccessProps) {
         textAlign: "center",
       }}
     >
-      <CheckCircle2 size={48} style={{ color: "#10B981", margin: "0 auto 16px" }} />
+      <CheckCircle2
+        size={48}
+        style={{ color: "#10B981", margin: "0 auto 16px" }}
+      />
       <h3
         style={{
           fontFamily: "Instrument Serif, Georgia, serif",
@@ -101,9 +104,11 @@ function SuccessState({ name, email }: SuccessProps) {
         }}
       >
         Thank you, {name.split(" ")[0]}. We will get back to you at{" "}
-        <strong style={{ color: "white" }}>{email}</strong> within 4 business hours.
+        <strong style={{ color: "white" }}>{email}</strong> within 4 business
+        hours.
       </p>
-      
+
+      <a
         href="https://calendly.com"
         target="_blank"
         rel="noopener noreferrer"
@@ -134,9 +139,9 @@ export function ContactForm() {
     message: "",
   });
 
-  const [errors, setErrors]     = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading]     = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function update(field: keyof FormData, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -249,7 +254,9 @@ export function ContactForm() {
             onChange={(e) => update("profession", e.target.value)}
             style={{
               ...baseInput,
-              borderColor: errors.profession ? "#EF4444" : "rgba(255,255,255,0.1)",
+              borderColor: errors.profession
+                ? "#EF4444"
+                : "rgba(255,255,255,0.1)",
               appearance: "none",
               cursor: "pointer",
             }}

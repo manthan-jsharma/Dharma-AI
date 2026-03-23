@@ -199,16 +199,16 @@ export default function CareersPage() {
               margin: "0 auto 36px",
             }}
           >
-            We are a small, remote-first team on a mission to make AI
-            accessible and actionable for every professional and SME in India.
-            If that excites you, we want to hear from you.
+            We are a small, remote-first team on a mission to make AI accessible
+            and actionable for every professional and SME in India. If that
+            excites you, we want to hear from you.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             {[
-              { val: "5",      label: "Team Members" },
-              { val: "50+",   label: "Clients Served" },
-              { val: "100%",  label: "Remote Friendly" },
-              { val: "2022",  label: "Founded" },
+              { val: "5", label: "Team Members" },
+              { val: "50+", label: "Clients Served" },
+              { val: "100%", label: "Remote Friendly" },
+              { val: "2022", label: "Founded" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -421,7 +421,8 @@ export default function CareersPage() {
                       )}
                     </div>
                   </div>
-                  
+
+                  <a
                     href={`mailto:careers@arthaai.in?subject=Application: ${role.title}`}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[10px] font-medium transition-all hover:opacity-90 flex-shrink-0"
                     style={{
@@ -460,10 +461,7 @@ export default function CareersPage() {
                   </p>
                   <div className="flex flex-col gap-2">
                     {role.requirements.map((req) => (
-                      <div
-                        key={req}
-                        className="flex items-start gap-2.5"
-                      >
+                      <div key={req} className="flex items-start gap-2.5">
                         <span
                           style={{
                             color: role.color,
@@ -517,10 +515,11 @@ export default function CareersPage() {
                 lineHeight: 1.7,
               }}
             >
-              We are always looking for exceptional people. Send us your
-              resume and tell us how you want to contribute.
+              We are always looking for exceptional people. Send us your resume
+              and tell us how you want to contribute.
             </p>
-            
+
+            <a
               href="mailto:careers@arthaai.in?subject=Open Application"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-[10px] transition-all hover:opacity-90"
               style={{

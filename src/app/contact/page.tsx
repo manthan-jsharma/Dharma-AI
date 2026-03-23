@@ -89,7 +89,7 @@ export default function ContactPage() {
               marginBottom: "16px",
             }}
           >
-            Let&apos;s Talk AI for
+            Let's Talk AI for
             <br />
             <em style={{ fontStyle: "italic", color: "#60A5FA" }}>
               Your Business
@@ -104,8 +104,8 @@ export default function ContactPage() {
               margin: "0 auto",
             }}
           >
-            Book a free 30-minute discovery call or send us a message.
-            We will get back to you within 4 hours.
+            Book a free 30-minute discovery call or send us a message. We will
+            get back to you within 4 hours.
           </p>
         </div>
       </section>
@@ -114,7 +114,6 @@ export default function ContactPage() {
       <section className="py-16 px-6" style={{ background: "#0D1117" }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
             {/* Left — Contact form */}
             <div>
               <p
@@ -132,7 +131,7 @@ export default function ContactPage() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                We&apos;d Love to Hear from You
+                We'd Love to Hear from You
               </h2>
               <ContactForm />
             </div>
@@ -160,7 +159,7 @@ export default function ContactPage() {
               {/* Contact cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                 {CONTACT_DETAILS.map((c) => (
-                  
+                  <a
                     key={c.label}
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
@@ -172,7 +171,9 @@ export default function ContactPage() {
                       textDecoration: "none",
                     }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = `${c.color}40`;
+                      (
+                        e.currentTarget as HTMLAnchorElement
+                      ).style.borderColor = `${c.color}40`;
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLAnchorElement).style.borderColor =
@@ -232,8 +233,8 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-2.5">
                   {[
                     { day: "Monday – Friday", hours: "9:00 AM – 7:00 PM IST" },
-                    { day: "Saturday",        hours: "10:00 AM – 4:00 PM IST" },
-                    { day: "Sunday",          hours: "Closed" },
+                    { day: "Saturday", hours: "10:00 AM – 4:00 PM IST" },
+                    { day: "Sunday", hours: "Closed" },
                   ].map((row) => (
                     <div
                       key={row.day}
